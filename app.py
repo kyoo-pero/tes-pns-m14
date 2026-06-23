@@ -36,13 +36,22 @@ diskon_slider = st.sidebar.slider("Besaran Diskon (%)", 0, 50, 10)
 # Engine
 hasil_pred, delta = run_simulation(iklan_slider, diskon_slider)
 
-# --- UI HASIL: Memberi warna pada kotak hasil ---
-# st.container dengan border=True memberikan bingkai yang kontras
+
 with st.container(border=True):
     col1, col2 = st.columns(2)
     col1.metric("Prediksi Keuntungan", f"Rp {hasil_pred:.2f} Jt", f"{delta:.2f} Jt")
     col2.write("### Catatan Analisis")
     col2.write(f"Skenario ini menghasilkan perubahan sebesar {delta:.2f} Juta dibandingkan kondisi baseline.")
+  
+st.write("### Detail Perbandingan Skenario")
+data_tabel = pd.DataFrame({
+    'Komponen': ['Anggaran Iklan (Juta)', 'Besaran Diskon (%)', 'Prediksi Keuntungan (Juta)'],
+    'Baseline': [10, 10, baseline_pred],
+    'Skenario Baru': [iklan_slider, diskon_slider, hasil_pred]
+})
+
+# Menampilkan tabel
+st.table(data_tabel)
 
 # Visualisasi
 st.write("### Grafik Perbandingan")
