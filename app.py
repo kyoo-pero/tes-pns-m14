@@ -27,14 +27,14 @@ def run_simulation(new_iklan, new_diskon):
 import streamlit as st
 st.set_page_config(
     page_title="Simulator Kebijakan Keuntungan Toko",
-    page_icon="🚀",
+    page_icon="🔮",
     layout="wide"
 )
 
 # ==========================
 # HEADER
 # ==========================
-st.title("🚀 Simulator Kebijakan Keuntungan Toko")
+st.title("🔮 Simulator Kebijakan Keuntungan Toko")
 st.caption("Analisis skenario kebijakan bisnis menggunakan simulasi What-If.")
 
 # ==========================
